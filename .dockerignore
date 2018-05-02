@@ -1,0 +1,6 @@
+.*.swp
+.dockerignore
+.idea
+.pytest_cache
+Dockerfile
+__pycache__
