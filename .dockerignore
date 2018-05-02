@@ -1,0 +1,12 @@
+.*.swp
+.DS_Store
+.direnv
+.envrc
+.idea
+.pytest_cache
+__pycache__
+
+.dockerignore
+.git
+.gitignore
+Dockerfile

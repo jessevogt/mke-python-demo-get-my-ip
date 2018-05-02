@@ -1,0 +1,6 @@
+aiohttp
+
+# for testing
+pytest
+aresponses
+pytest-asyncio
