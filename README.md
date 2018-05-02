@@ -33,11 +33,11 @@ __github.com/jessevogt/mke-python-demo-get-my-ip__
 ```
 sudo: required
 services:
-- docker
+    - docker
 before_install:
-- docker build -t jessevogt/get-my-ip:$TRAVIS_COMMIT .
+    - docker build -t jessevogt/get-my-ip:$TRAVIS_COMMIT .
 script:
-- docker run --rm jessevogt/get-my-ip:$TRAVIS_COMMIT pytest
+    - docker run --rm jessevogt/get-my-ip:$TRAVIS_COMMIT pytest
 ```
 
 Badge me!
