@@ -14,8 +14,8 @@ class Service(ABC):
         """ make request to service and parse response """
 
     def __repr__(self, **kwargs):
-        extra = " ".join(f"{k}={v}" for k, v in kwargs.items())
-        return f'<{self.__class__.__name__} endpoint={self.endpoint}{" " + extra if extra else ""}>'
+        extra = (' ' + ' '.join(f'{k}={v}' for k, v in kwargs.items())).rstrip()
+        return f'<{self.__class__.__name__} endpoint={self.endpoint}{extra}>'
 
 
 class TextService(Service):
@@ -42,8 +42,17 @@ class JSONService(Service):
         return super().__repr__(path=self.path)
 
 
-@lru_cache()
-def parse_service(line: str) -> Service:
+def create_service(line: str) -> Service:
+    """
+    >>> create_service('text.com')
+    <TextService endpoint=text.com>
+    >>> create_service('json.com json ip')
+    <JSONService endpoint=json.com path=('ip',)>
+    >>> create_service('xml.com xml')
+    Traceback (most recent call last):
+     ...
+    Exception: Unknown service in line: xml.com xml
+    """
     endpoint, *args = line.split(maxsplit=2)
 
     content_type = args.pop(0) if args else 'text'
@@ -65,4 +74,4 @@ def parse_service(line: str) -> Service:
 @lru_cache()
 def services() -> Iterable[Service]:
     with open('services.txt', 'r') as f:
-        return tuple(parse_service(line) for line in f)
+        return tuple(create_service(line) for line in f)

@@ -5,10 +5,10 @@ About me: Jesse Vogt, [jessevogt.com](http://jessevogt.com)
 __github.com/jessevogt/mke-python-demo-get-my-ip__
 - get my public ip address by checking against a number of public services
 - `services.py`
+	- services.txt
 	- holds endpoint url
 	- can make request through a provided `ClientSession`
 	- can extract ip address from service response
-	- service.txt
 - `myp.py`
     - main entry point
 	- requests my ip from each defined service
@@ -25,7 +25,7 @@ __github.com/jessevogt/mke-python-demo-get-my-ip__
 
 ### [doctest](https://docs.python.org/3/library/doctest.html)
 `services.py`
-- parse_service
+- create_service
 
 
 ## Continuous Integration:
@@ -36,9 +36,9 @@ sudo: required
 services:
     - docker
 before_install:
-    - docker build -t jessevogt/get-my-ip:$TRAVIS_COMMIT .
+    - docker build -t jessevogt/mke-python-demo-get-my-ip:$TRAVIS_COMMIT .
 script:
-    - docker run --rm jessevogt/get-my-ip:$TRAVIS_COMMIT pytest
+    - docker run --rm jessevogt/mke-python-demo-get-my-ip:$TRAVIS_COMMIT pytest
 ```
 
 Badge me!
