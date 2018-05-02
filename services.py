@@ -44,6 +44,16 @@ class JSONService(Service):
 
 @lru_cache()
 def parse_service(line: str) -> Service:
+    """
+    >>> parse_service('text.com')
+    <TextService endpoint=text.com>
+    >>> parse_service('json.com json ip')
+    <JSONService endpoint=json.com path=('ip',)>
+    >>> parse_service('xml.com xml')
+    Traceback (most recent call last):
+     ...
+    Exception: Unknown service in line: xml.com xml
+    """
     endpoint, *args = line.split(maxsplit=2)
 
     content_type = args.pop(0) if args else 'text'
