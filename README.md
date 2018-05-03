@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jessevogt/mke-python-demo-get-my-ip.svg?branch=master)](https://travis-ci.org/jessevogt/mke-python-demo-get-my-ip)
+
 # Lightning Talk: Testing & CI
 Jesse Vogt, [jessevogt.com](http://jessevogt.com)
 

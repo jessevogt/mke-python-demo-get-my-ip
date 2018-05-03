@@ -58,6 +58,16 @@ _service_type_registry = {
 
 
 def parse_service(line: str) -> Service:
+    """
+    >>> parse_service('text.com')
+    <TextService endpoint=text.com>
+    >>> parse_service('json.com json addr')
+    <JSONService endpoint=json.com path=('addr',)>
+    >>> parse_service('xml.com xml')
+    Traceback (most recent call last):
+     ...
+    Exception: Error parsing service definition: xml.com xml
+    """
     endpoint, *extra = line.split(maxsplit=2)
 
     content_type = extra.pop(0) if extra else 'text'
